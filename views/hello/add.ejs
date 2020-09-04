@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <head>
+      <h1><%= title %> </h1>
+    </head>
+    <div role="main">
+      <p><%= content %> </p>
+      <form action="/hello/add" method="post">
+        <tr>
+          <th>NAME</th>
+          <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+          <th>MAIl</th>
+          <td><input type="text" name="mail"></td>
+        </tr>
+        <tr>
+          <th>AGE</th>
+          <td><input type="number" name="age"></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><input type="submit" value="作成"></td>
+        </tr>
+      </form>
+    </div>
+  </body>
+</html>

@@ -8,6 +8,7 @@ var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var hello = require('./routes/hello');
+var ajax = require('./routes/ajax');
 
 var app = express();
 
@@ -22,9 +23,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 var session_opt = {
+  // 秘密キー
   secret: 'keyboard cat',
+  // セッションストア（強制的に値を保存するためのもの）
   resave: false,
+  // 初期化されてない値を強制的に保存するためのもの
   saveUninitialized: false,
+  // セッションIDを保管するクッキー設定、1時間保存
   cookie: { maxAge: 60 * 60 * 1000 }
 };
 app.use(session(session_opt));
@@ -32,6 +37,7 @@ app.use(session(session_opt));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/hello', hello);
+app.use('/ajax', ajax);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
